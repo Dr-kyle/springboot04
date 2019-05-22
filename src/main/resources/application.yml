@@ -1,0 +1,18 @@
+server:
+  port: 8082
+
+name:
+  test1: "zhang \n san"
+  test2: 'zhang \n san'
+person:
+  lastName: zhangsan
+  age: 18
+  boss: false
+  maps: {k1: v1, k2: v2}
+  lists:
+    - list
+    - zhaoliu
+  dog:
+    name: xiaogou
+    age: 2
+  birth: 2017/12/12
