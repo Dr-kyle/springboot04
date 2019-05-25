@@ -322,11 +322,54 @@ Profile是Spring对不同环境提供不同配置功能的支持，可以通过�
 
 ### 4.2 多Profile 文档块模式:
 
+```yaml
+spring:
+  profiles:
+    active: dev
+---
+server:
+  port: 8083
+name:
+  test1: "lisi8083 \n lisi"
+  test2: 'lisi8083 \n lisi'
+spring:
+  profiles: dev
+---
+server:
+  port: 8084
+name:
+  test1: "lisi8084 \n lisi"
+  test2: 'lisi8084 \n lisi'
+  spring:
+    profiles: prod
+```
+
+
+
 ### 4.3 激活方式
 
 - 命令行 --spring.profiles.active=dev
-- 配置文件 spring.profiles.actiove=dec
-- jvm 参数 -DSpring.profile.active=dev
+- 配置文件 spring.profiles.active=dev
+- jvm 参数 -Dspring.profiles.active=dev
+
+## 5. 配置文件加载位置
+
+SpringBoot启动会扫描一下位置的application.properties或者application.yml文件作为Spring boot的默认配置文件
+
+- file: ./config/
+- file: /
+- classpath: /config/
+- classpath:/
+
+以上是按照优先级从高到低的顺序，所有位置的文件都会被加载，**高优先级配置会覆盖低优先级配置内容**。
+
+也可以通过 **--spring.config.location** 参数来改变默认配置
+
+## 6. 外部配置文件加载顺序
+
+
+
+
 
 
 

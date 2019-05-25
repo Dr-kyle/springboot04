@@ -1,11 +1,6 @@
 spring:
   profiles:
     active: dev
-server:
-  port: 8082
-name:
-  test1: "lisi \n lisi"
-  test2: 'lisi \n lisi'
 #person:
 #  lastName: lisi
 #  age: 18
@@ -19,10 +14,11 @@ name:
 #    age: 2
 #  birth: 2017/12/12
 #  email: 13636@163.com
-
 ---
 server:
   port: 8083
+  servlet:
+    context-path: /kyle
 name:
   test1: "lisi8083 \n lisi"
   test2: 'lisi8083 \n lisi'
