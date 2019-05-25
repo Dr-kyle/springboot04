@@ -141,7 +141,7 @@ Spring Boot在启动的时候从类路径下的 META-INF/spring.factories中获�
 
 Springboot 全局配置文件
 
-- application.properties
+- application.properties 优先级比yml高
 - application.yml (YAML: YAML Ain't Markup Language),以数据为中心，比json、xml更适合做配置文件。
 
 ### 3.1 YAML 基本语法
@@ -257,6 +257,76 @@ pets: [cat,dog,pig]
 '' : 单引号，会转义特殊字符，特殊字符最终只是一个普通的字符串数据
 
   name: 'zhangsan \n lisi' 输出 zhangsan \n lisi
+
+### 3.3 @Value和@ConfigurationProperties区别
+
+@ConfigurationProperties默认从全局配置文件中获取值
+
+|              | @ConfigurationProperties     | @Value     |
+| ------------ | ---------------------------- | ---------- |
+| 功能上       | 可以批量注入配置文件中的属性 | 一个个指定 |
+| 松散绑定     | 支持                         | 不支持     |
+| SpEl         | 不支持                       | 支持       |
+| JSR303效验   | 支持@Validated               | 不支持     |
+| 复杂类型封装 | 支持                         | 不支持     |
+
+如果说专门编写了javaBean 来和配置文件进行映射，直接使用@ConfigurationProperties
+
+### 3.4 @PropertySource 、@ImportResource、 @Bean
+
+@PropertySource 加载指定的配置文件
+
+```java
+@PropertySource(value = {"classpath:person.properties"})
+```
+
+@ImportResource 导入Spring的配置文件，让配置文件里面的内容生效
+
+```
+@ImportResource(value = {"classpath:beans.xml"})
+beans.xml 配置了一个bean
+导入Spring的配置文件让其生效
+```
+
+SpringBoot 推荐给容器中添加组件的方式，推荐使用全注解的方式
+
+1. Spring 配置类 MyAppConfig.java
+2. 使用@Bean和@Configuration 添加bean
+
+### 3.5 配置文件占位符
+
+#### 3.5.1 配置文件中可以使用随机数
+
+${random.value}、${random.int}、${random.long}
+
+${random.int(10)}、${random.int[1024,65536]}
+
+#### 3.5.2 属性配置占位符
+
+app.name=MyApp
+
+app.description=${app.name} is a Spring Boot application
+
+${app.name:默认值} 来指定找不到属性时的默认值
+
+## 4. Profile
+
+Profile是Spring对不同环境提供不同配置功能的支持，可以通过激活、指定参数等方式快速切换环境
+
+### 4.1 多profile文件形式
+
+格式：application-{profile}.properties
+
+- application-dev.properties
+- application-prod.properties
+
+### 4.2 多Profile 文档块模式:
+
+### 4.3 激活方式
+
+- 命令行 --spring.profiles.active=dev
+- 配置文件 spring.profiles.actiove=dec
+- jvm 参数 -DSpring.profile.active=dev
 
 
 

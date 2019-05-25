@@ -1,18 +1,38 @@
+spring:
+  profiles:
+    active: dev
 server:
   port: 8082
-
 name:
-  test1: "zhang \n san"
-  test2: 'zhang \n san'
-person:
-  lastName: zhangsan
-  age: 18
-  boss: false
-  maps: {k1: v1, k2: v2}
-  lists:
-    - list
-    - zhaoliu
-  dog:
-    name: xiaogou
-    age: 2
-  birth: 2017/12/12
+  test1: "lisi \n lisi"
+  test2: 'lisi \n lisi'
+#person:
+#  lastName: lisi
+#  age: 18
+#  boss: false
+#  maps: {k1: v1, k2: v2}
+#  lists:
+#    - list
+#    - zhaoliu
+#  dog:
+#    name: xiaogou
+#    age: 2
+#  birth: 2017/12/12
+#  email: 13636@163.com
+
+---
+server:
+  port: 8083
+name:
+  test1: "lisi8083 \n lisi"
+  test2: 'lisi8083 \n lisi'
+spring:
+  profiles: dev
+---
+server:
+  port: 8084
+name:
+  test1: "lisi8084 \n lisi"
+  test2: 'lisi8084 \n lisi'
+  spring:
+    profiles: prod

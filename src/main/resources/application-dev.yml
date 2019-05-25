@@ -1,0 +1,19 @@
+server:
+  port: 8083
+#
+name:
+  test1: "zhang \n san"
+  test2: 'zhang \n san'
+#person:
+#  lastName: lisi
+#  age: 18
+#  boss: false
+#  maps: {k1: v1, k2: v2}
+#  lists:
+#    - list
+#    - zhaoliu
+#  dog:
+#    name: xiaogou
+#    age: 2
+#  birth: 2017/12/12
+#  email: 13636@163.com

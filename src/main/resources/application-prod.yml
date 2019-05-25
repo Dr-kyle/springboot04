@@ -1,0 +1,5 @@
+server:
+  port: 8084
+name:
+  test1: "zhang \n san"
+  test2: 'zhang \n san'
